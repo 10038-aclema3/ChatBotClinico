@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  chatbot-derma:
+    build: .
+    container_name: chatbot_clinico
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - ./chroma_db:/app/chroma_db  # Persistencia del vector DB
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
